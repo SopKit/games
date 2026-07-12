@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ChevronLeft, Star } from 'lucide-react';
 import { GameInteractions } from '../../../components/GameInteractions';
 
-const BASE_URL = 'https://sopgames.30tools.com';
+const BASE_URL = 'http://sopkit.github.io/games';
 
 let gamesCache: Game[] | null = null;
 

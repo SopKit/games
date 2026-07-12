@@ -54,3 +54,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Submit to IndexNow
+        run: bun run submit_indexnow.ts
+        working-directory: .

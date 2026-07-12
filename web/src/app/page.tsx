@@ -9,7 +9,7 @@ import { Suspense } from 'react';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-const BASE_URL = 'https://sopgames.30tools.com';
+const BASE_URL = 'http://sopkit.github.io/games';
 
 async function getGames() {
   try {
@@ -27,8 +27,41 @@ export default async function Home() {
   const games = await getGames();
   const heroGame = games[0]; // Or random, but deterministic for build
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': 'SOP Games',
+    'url': BASE_URL,
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': `${BASE_URL}/?search={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'numberOfItems': games.length,
+    'itemListElement': games.slice(0, 100).map((game, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'url': `${BASE_URL}/game/${game.slug}`,
+      'name': game.name,
+      'image': game.image,
+    })),
+  };
+
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       {/* Immersive Hero Section */}
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Dynamic Background */}

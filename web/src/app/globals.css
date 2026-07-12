@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-	--background: #050505;
-	--foreground: #fafafa;
-	--card: #0a0a0a;
+	--background: #02000f; /* Cosmic dark background */
+	--foreground: #f3f4f6; /* Off-white text */
+	--card: rgba(13, 10, 37, 0.45); /* Translucent glass card */
 	--card-foreground: #fafafa;
-	--primary: #fafafa;
-	--primary-foreground: #09090b;
-	--muted: #27272a;
-	--muted-foreground: #a1a1aa;
-	--accent: #27272a;
-	--accent-foreground: #fafafa;
-	--border: #27272a;
+	--primary: #8b5cf6; /* Cyber Purple */
+	--primary-foreground: #ffffff;
+	--muted: #1e1b4b; /* Deep indigo */
+	--muted-foreground: #94a3b8; /* Muted blue-grey */
+	--border: rgba(139, 92, 246, 0.15); /* Translucent violet border */
+	--accent: #00f2fe; /* Cyber Cyan */
+	--accent-foreground: #02000f;
 }
 
 @theme inline {
@@ -29,11 +29,36 @@
 }
 
 body {
-	background: var(--background);
+	background: radial-gradient(circle at 50% 0%, #1e1145 0%, var(--background) 70%);
+	background-attachment: fixed;
 	color: var(--foreground);
 	font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+	background: rgba(13, 10, 37, 0.4);
+	backdrop-filter: blur(16px);
+	border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+/* Cyber glows */
+.glow-primary {
+	box-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
+}
+
+.glow-accent {
+	box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+}
+
+.glow-text-primary {
+	text-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+.glow-text-accent {
+	text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
 }
 
 /* Custom Scrollbar for cinematic feel */
@@ -46,10 +71,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--muted);
+	background: rgba(139, 92, 246, 0.3);
 	border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--muted-foreground);
+	background: rgba(139, 92, 246, 0.6);
+	box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
 }

@@ -72,27 +72,26 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
     return (
         <div className="space-y-8 animate-fade-in-up delay-300">
             {/* Controls Bar */}
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-card/50 backdrop-blur-xl p-2 rounded-2xl border border-white/10 shadow-xl ring-1 ring-white/5">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-card/35 backdrop-blur-xl p-3 rounded-2xl border border-white/5 shadow-2xl ring-1 ring-white/5">
                 {/* Search */}
                 <div className="relative w-full md:w-96 group">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Search className="h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Search className="h-5 w-5 text-muted-foreground group-focus-within:text-accent transition-colors" />
                     </div>
                     <input
                         type="text"
                         placeholder="Search 14,000+ games..."
                         defaultValue={search}
                         onChange={(e) => {
-                            // Debounce via URL update? For now direct update.
                             updateState('search', e.target.value);
                         }}
-                        className="block w-full pl-10 pr-3 py-3 border-none rounded-xl leading-5 bg-white/5 text-foreground placeholder-muted-foreground focus:outline-none focus:bg-white/10 focus:ring-0 transition-all sm:text-sm"
+                        className="block w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 text-foreground placeholder-muted-foreground border border-white/10 focus:outline-none focus:bg-white/10 focus:border-accent/40 focus:ring-2 focus:ring-accent/20 transition-all sm:text-sm"
                     />
                 </div>
 
                 {/* Sort & Stats */}
                 <div className="flex items-center gap-4 w-full md:w-auto px-2">
-                    <span className="hidden md:inline text-sm font-medium text-muted-foreground bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
+                    <span className="hidden md:inline text-sm font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-lg border border-accent/20">
                         {filteredGames.length.toLocaleString()} Games
                     </span>
 
@@ -100,7 +99,7 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
                         <select
                             value={sort}
                             onChange={(e) => updateState('sort', e.target.value)}
-                            className="appearance-none w-full md:w-40 bg-white/5 border border-white/10 text-foreground py-3 pl-4 pr-10 rounded-xl leading-tight focus:outline-none focus:bg-white/10 transition-colors cursor-pointer text-sm font-medium"
+                            className="appearance-none w-full md:w-40 bg-white/5 border border-white/10 text-foreground py-3 pl-4 pr-10 rounded-xl leading-tight focus:outline-none focus:bg-white/10 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer text-sm font-semibold"
                         >
                             <option value="rating">Top Rated</option>
                             <option value="newest">Newest Added</option>
@@ -135,12 +134,12 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
                     <button
                         onClick={() => updateState('page', String(Math.max(1, page - 1)))}
                         disabled={page === 1}
-                        className="p-3 rounded-xl bg-card/50 border border-white/10 disabled:opacity-30 hover:bg-white/10 transition-all active:scale-95 backdrop-blur-md"
+                        className="p-3 rounded-xl bg-card/40 border border-white/5 disabled:opacity-30 hover:bg-white/10 transition-all active:scale-95 backdrop-blur-md hover:border-primary/20"
                     >
                         <ChevronLeft className="w-5 h-5" />
                     </button>
 
-                    <div className="hidden md:flex items-center gap-2 px-4 bg-card/30 backdrop-blur-md py-2 rounded-xl border border-white/5 mx-4">
+                    <div className="hidden md:flex items-center gap-2 px-4 bg-card/25 backdrop-blur-md py-2 rounded-xl border border-white/5 mx-4">
                         {/* Simplified Pagination Logic for display */}
                         {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                             let p = page;
@@ -159,8 +158,8 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
                                     <button
                                         key={p}
                                         onClick={() => updateState('page', String(p))}
-                                        className={`w-10 h-10 rounded-lg text-sm font-bold transition-all ${page === p
-                                            ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-110'
+                                        className={`w-10 h-10 rounded-lg text-sm font-bold transition-all duration-300 ${page === p
+                                            ? 'bg-primary text-white shadow-lg shadow-primary/30 scale-110 border border-white/10'
                                             : 'text-muted-foreground hover:bg-white/10 hover:text-foreground'
                                             }`}
                                     >
@@ -180,7 +179,7 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
                     <button
                         onClick={() => updateState('page', String(Math.min(totalPages, page + 1)))}
                         disabled={page === totalPages}
-                        className="p-3 rounded-xl bg-card/50 border border-white/10 disabled:opacity-30 hover:bg-white/10 transition-all active:scale-95 backdrop-blur-md"
+                        className="p-3 rounded-xl bg-card/40 border border-white/5 disabled:opacity-30 hover:bg-white/10 transition-all active:scale-95 backdrop-blur-md hover:border-primary/20"
                     >
                         <ChevronRight className="w-5 h-5" />
                     </button>

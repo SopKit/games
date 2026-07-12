@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,12 +20,15 @@ export const viewport = {
 	maximumScale: 1,
 };
 
-const BASE_URL = 'https://sopgames.30tools.com';
+const BASE_URL = 'http://sopkit.github.io/games';
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://sopgames.30tools.com'),
+	metadataBase: new URL('http://sopkit.github.io/games'),
 	icons: {
 		icon: '/favicon.svg',
+	},
+	other: {
+		"google-adsense-account": "ca-pub-1828915420581549",
 	},
 	title: {
 		default: "SOP Games | Top Free Online Games",
@@ -49,11 +53,11 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "SOP Games | Top Free Online Games",
 		description: "Play thousands of free online games instantly. Cinematic experience, no downloads.",
-		url: 'https://sopgames.30tools.com',
+		url: 'http://sopkit.github.io/games',
 		siteName: "SOP Games",
 		images: [
 			{
-				url: 'https://sopgames.30tools.com/og-image.jpg', // Placeholder, user might need to add this
+				url: 'http://sopkit.github.io/games/og-image.jpg', // Placeholder, user might need to add this
 				width: 1200,
 				height: 630,
 				alt: 'SOP Games Preview',
@@ -91,7 +95,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				<Script
+					async
+					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1828915420581549"
+					crossOrigin="anonymous"
+					strategy="afterInteractive"
+				/>
+				{children}
+			</body>
 		</html>
 	);
 }
