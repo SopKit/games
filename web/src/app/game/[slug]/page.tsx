@@ -148,7 +148,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                     />
                 </div>
 
-                <nav className="relative z-50 p-4 border-b border-white/5 bg-background/20 backdrop-blur-xl sticky top-0">
+                <nav className="relative z-20 p-4 border-b border-white/5 bg-white/5 backdrop-blur-md">
                     <div className="max-w-7xl mx-auto flex items-center justify-between">
                         <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors group">
                             <div className="p-2 rounded-full bg-white/5 group-hover:bg-white/10 transition-all border border-white/5 group-hover:border-white/20">
@@ -156,7 +156,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                             </div>
                             <span className="font-medium hidden sm:inline">Back to Browse</span>
                         </Link>
-                        <h1 className="font-bold text-lg text-white/90 truncate max-w-[200px] md:max-w-md">{game.name}</h1>
+                        <span className="font-bold text-lg text-white/90 truncate max-w-[200px] md:max-w-md">{game.name}</span>
                         <div className="w-10 md:w-24" />
                     </div>
                 </nav>

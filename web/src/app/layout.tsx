@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,6 +31,9 @@ export const metadata: Metadata = {
 	},
 	other: {
 		"google-adsense-account": "ca-pub-1828915420581549",
+	},
+	alternates: {
+		canonical: 'http://sopkit.github.io/games',
 	},
 	title: {
 		default: "SOP Games | Top Free Online Games",
@@ -95,14 +100,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
 				<Script
 					async
 					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1828915420581549"
 					crossOrigin="anonymous"
 					strategy="afterInteractive"
 				/>
-				{children}
+				<Navbar />
+				<div className="flex-grow">{children}</div>
+				<Footer />
 			</body>
 		</html>
 	);
