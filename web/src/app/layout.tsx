@@ -28,6 +28,7 @@ export const metadata: Metadata = {
 	metadataBase: new URL('http://sopkit.github.io/games'),
 	icons: {
 		icon: '/favicon.svg',
+		apple: '/games/apple-touch-icon.png',
 	},
 	other: {
 		"google-adsense-account": "ca-pub-1828915420581549",
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
 		siteName: "SOP Games",
 		images: [
 			{
-				url: 'http://sopkit.github.io/games/og-image.jpg', // Placeholder, user might need to add this
+				url: 'http://sopkit.github.io/games/og-image.png',
 				width: 1200,
 				height: 630,
 				alt: 'SOP Games Preview',
@@ -107,6 +108,17 @@ export default function RootLayout({
 					crossOrigin="anonymous"
 					strategy="afterInteractive"
 				/>
+				<script dangerouslySetInnerHTML={{ __html: `
+					if ('serviceWorker' in navigator) {
+						window.addEventListener('load', function() {
+							navigator.serviceWorker.register('/games/sw.js').then(function(reg) {
+								console.log('SW Registered:', reg.scope);
+							}).catch(function(err) {
+								console.log('SW Registration failed:', err);
+							});
+						});
+					}
+				`}} />
 				<Navbar />
 				<div className="flex-grow">{children}</div>
 				<Footer />

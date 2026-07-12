@@ -2,9 +2,12 @@
 
 import { useMemo, useCallback } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import useSWR from 'swr';
 import { Game } from '../types';
 import { GameGrid } from './GameGrid';
 import { Search, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+
+const fetcher = (url: string): Promise<any> => fetch(url).then((res) => res.json());
 
 const GAMES_PER_PAGE = 50;
 
@@ -13,6 +16,12 @@ interface GameCatalogProps {
 }
 
 export function GameCatalog({ initialGames }: GameCatalogProps) {
+    const { data: games } = useSWR<Game[]>('/games/games.json', fetcher, {
+        fallbackData: initialGames,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+    });
+
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -43,7 +52,7 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
     };
 
     const filteredGames = useMemo(() => {
-        let result = [...initialGames];
+        let result = [...(games || initialGames)];
 
         if (search) {
             const lowerSearch = search.toLowerCase();

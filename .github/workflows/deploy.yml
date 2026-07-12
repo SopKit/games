@@ -53,6 +53,9 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Submit to IndexNow
+      - name: Submit to IndexNow & Bing
         run: bun run submit_indexnow.ts
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         working-directory: .

@@ -1,0 +1,25 @@
+name: Daily IndexNow & Bing Submission
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Every day at midnight UTC
+  workflow_dispatch: # Allows manual triggering from the Actions UI
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Submit to IndexNow & Bing
+        run: bun run submit_indexnow.ts
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        working-directory: .
