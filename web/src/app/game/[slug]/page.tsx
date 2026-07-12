@@ -8,25 +8,34 @@ import { GameInteractions } from '../../../components/GameInteractions';
 
 const BASE_URL = 'https://sopgames.30tools.com';
 
+let gamesCache: Game[] | null = null;
+
 async function getGames(): Promise<Game[]> {
+    if (gamesCache) return gamesCache;
     try {
         // Try file system first (Works at build time & local dev)
         const filePath = path.join(process.cwd(), 'public', 'games.json');
         const fileContents = await fs.readFile(filePath, 'utf8');
-        return JSON.parse(fileContents);
+        gamesCache = JSON.parse(fileContents);
+        return gamesCache!;
     } catch (error) {
         // Fallback to network fetch (Works at runtime on Cloudflare)
         console.log('Falling back to network fetch for games.json');
         const res = await fetch(`${BASE_URL}/games.json`, { next: { revalidate: 3600 } });
         if (!res.ok) throw new Error('Failed to fetch game data');
-        return res.json();
+        gamesCache = await res.json();
+        return gamesCache!;
     }
 }
 
 export async function generateStaticParams() {
     const games = await getGames();
-    // Build top 200 pages statically
-    return games.slice(0, 200).map((game) => ({
+    const isStaticExport = process.env.GITHUB_ACTIONS === "true" || process.env.EXPORT_STATIC === "true";
+    
+    // For static hosting like GitHub Pages, we must pre-render all games
+    const gamesToRender = isStaticExport ? games : games.slice(0, 200);
+    
+    return gamesToRender.map((game) => ({
         slug: game.slug,
     }));
 }

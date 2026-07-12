@@ -23,6 +23,9 @@ const BASE_URL = 'https://sopgames.30tools.com';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://sopgames.30tools.com'),
+	icons: {
+		icon: '/favicon.svg',
+	},
 	title: {
 		default: "SOP Games | Top Free Online Games",
 		template: "%s | SOP Games"
@@ -88,9 +91,6 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
-			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
 		</html>
 	);
