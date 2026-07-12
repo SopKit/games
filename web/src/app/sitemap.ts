@@ -3,6 +3,8 @@ import { Game } from '../types';
 import { promises as fs } from 'fs';
 import path from 'path';
 
+export const dynamic = 'force-static';
+
 const BASE_URL = 'https://sopgames.30tools.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
