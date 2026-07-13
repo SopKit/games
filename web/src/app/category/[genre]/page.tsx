@@ -85,9 +85,14 @@ export default async function CategoryPage({ params }: CategoryProps) {
                             </div>
                             <span className="text-xs font-bold uppercase tracking-widest hidden sm:inline">Back</span>
                         </Link>
-                        <h1 className="text-2xl md:text-4xl font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70">
-                            {originalCategory} Games
-                        </h1>
+                        <div className="space-y-1 text-center md:text-right">
+                            <h1 className="text-2xl md:text-4xl font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70">
+                                {originalCategory} Games
+                            </h1>
+                            <p className="text-[10px] text-muted-foreground hidden sm:block">
+                                Play the best free online {originalCategory.toLowerCase()} games. Handpicked HTML5 titles.
+                            </p>
+                        </div>
                         <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-lg border border-accent/20">
                             {categoryGames.length} Titles
                         </span>

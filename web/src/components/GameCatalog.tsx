@@ -285,6 +285,38 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
                 </div>
             </div>
 
+            {/* Genres / Browse by Category */}
+            <div className="space-y-3">
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">
+                    Browse by Genre
+                </span>
+                <div className="flex flex-wrap gap-2.5">
+                    {[
+                        { name: 'Puzzle', slug: 'puzzle' },
+                        { name: 'Action', slug: 'action' },
+                        { name: 'Hypercasual', slug: 'hypercasual' },
+                        { name: 'Arcade', slug: 'arcade' },
+                        { name: 'Sports', slug: 'sports' },
+                        { name: 'Racing', slug: 'racing' },
+                        { name: 'Adventure', slug: 'adventure' },
+                        { name: 'Shooting', slug: 'shooting' },
+                        { name: 'Cooking', slug: 'cooking' },
+                        { name: 'Multiplayer', slug: 'multiplayer' },
+                        { name: 'Clicker', slug: 'clicker' },
+                        { name: '3D', slug: '3d' },
+                        { name: 'Soccer', slug: 'soccer' },
+                    ].map((genre) => (
+                        <Link
+                            key={genre.slug}
+                            href={`/category/${genre.slug}`}
+                            className="px-4 py-2 rounded-xl bg-card/25 hover:bg-primary/10 border border-white/5 hover:border-primary/30 text-xs font-bold text-white/80 hover:text-white transition-all hover:scale-105 active:scale-95 shadow-md"
+                        >
+                            {genre.name}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
             {/* Controls Bar */}
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-card/35 backdrop-blur-xl p-3 rounded-2xl border border-white/5 shadow-2xl ring-1 ring-white/5">
                 {/* Search */}

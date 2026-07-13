@@ -26,6 +26,7 @@ const BASE_URL = 'https://sopkit.github.io/games';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(BASE_URL),
+	manifest: '/games/manifest.webmanifest',
 	icons: {
 		icon: '/favicon.svg',
 		apple: '/games/apple-touch-icon.png',
