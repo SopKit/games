@@ -9,7 +9,7 @@ import { Suspense } from 'react';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-const BASE_URL = 'http://sopkit.github.io/games';
+const BASE_URL = 'https://sopkit.github.io/games';
 
 async function getGames() {
   try {
@@ -99,7 +99,7 @@ export default async function Home() {
               <Gamepad2 className="w-5 h-5" />
               Start Playing
             </Link>
-            <Link href="/game/spiny-ninja" className="px-8 py-4 rounded-full bg-white/10 text-white font-semibold text-lg hover:bg-white/20 transition-all backdrop-blur-md border border-white/10 flex items-center gap-2">
+            <Link href={`/game/${heroGame.slug}`} className="px-8 py-4 rounded-full bg-white/10 text-white font-semibold text-lg hover:bg-white/20 transition-all backdrop-blur-md border border-white/10 flex items-center gap-2">
               <Sparkles className="w-5 h-5" />
               Featured Game
             </Link>

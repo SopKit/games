@@ -5,8 +5,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronLeft, Star } from 'lucide-react';
 import { GameInteractions } from '../../../components/GameInteractions';
+import { GameGrid } from '../../../components/GameGrid';
 
-const BASE_URL = 'http://sopkit.github.io/games';
+const BASE_URL = 'https://sopkit.github.io/games';
 
 let gamesCache: Game[] | null = null;
 
@@ -73,10 +74,27 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
     if (!game) {
         return (
             <div className="flex items-center justify-center min-h-screen">
-                <h1 className="text-2xl">Game not found</h1>
+                <div className="text-center space-y-4">
+                    <h1 className="text-2xl font-bold text-white">Game Not Found</h1>
+                    <Link href="/" className="text-primary hover:underline">Back to Home</Link>
+                </div>
             </div>
         );
     }
+
+    // Related Games: find games in same category, exclude current, limit to 6
+    const relatedGames = games
+        .filter((g) => g.category === game.category && g.slug !== slug)
+        .slice(0, 6);
+
+    // If we have fewer than 6 related games, fill the rest with other popular games
+    if (relatedGames.length < 6) {
+        const otherGames = games
+            .filter((g) => g.slug !== slug && !relatedGames.some((rg) => rg.slug === g.slug))
+            .slice(0, 6 - relatedGames.length);
+        relatedGames.push(...otherGames);
+    }
+
 
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -246,6 +264,14 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Related Games Section */}
+                    <div className="border-t border-white/5 pt-12 space-y-6">
+                        <h3 className="text-xl md:text-2xl font-black uppercase tracking-wider text-white">
+                            Related Games
+                        </h3>
+                        <GameGrid games={relatedGames} />
                     </div>
                 </div>
             </main>

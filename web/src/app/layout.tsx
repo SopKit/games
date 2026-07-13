@@ -22,7 +22,7 @@ export const viewport = {
 	maximumScale: 1,
 };
 
-const BASE_URL = 'http://sopkit.github.io/games';
+const BASE_URL = 'https://sopkit.github.io/games';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(BASE_URL),
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 		"google-adsense-account": "ca-pub-1828915420581549",
 	},
 	alternates: {
-		canonical: 'http://sopkit.github.io/games',
+		canonical: 'https://sopkit.github.io/games',
 	},
 	title: {
 		default: "SOP Games | Top Free Online Games",
@@ -59,11 +59,11 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "SOP Games | Top Free Online Games",
 		description: "Play thousands of free online games instantly. Cinematic experience, no downloads.",
-		url: 'http://sopkit.github.io/games',
+		url: 'https://sopkit.github.io/games',
 		siteName: "SOP Games",
 		images: [
 			{
-				url: 'http://sopkit.github.io/games/og-image.png',
+				url: 'https://sopkit.github.io/games/og-image.png',
 				width: 1200,
 				height: 630,
 				alt: 'SOP Games Preview',

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = 'http://sopkit.github.io/games';
+const BASE_URL = 'https://sopkit.github.io/games';
 
 export default function robots(): MetadataRoute.Robots {
     return {

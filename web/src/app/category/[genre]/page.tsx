@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import { Metadata } from 'next';
 
-const BASE_URL = 'http://sopkit.github.io/games';
+const BASE_URL = 'https://sopkit.github.io/games';
 
 export const dynamic = 'force-static';
 

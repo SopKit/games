@@ -5,7 +5,7 @@ import path from 'path';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = 'http://sopkit.github.io/games';
+const BASE_URL = 'https://sopkit.github.io/games';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     let games: Game[] = [];
