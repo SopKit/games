@@ -2,8 +2,8 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 // Load keys from environment variables with fallbacks
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '8a92b225c56c4293a55543c3938a1234';
-const BING_API_KEY = process.env.BING_API_KEY || '9b967fb442cc491d9abeb836052845bb';
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '';
+const BING_API_KEY = process.env.BING_API_KEY || '';
 
 const KEY_LOCATION = `https://sopkit.github.io/games/${INDEXNOW_KEY}.txt`;
 const HOST = 'sopkit.github.io';

@@ -18,7 +18,7 @@ async function getGames(): Promise<Game[]> {
         const fileContents = await fs.readFile(filePath, 'utf8');
         gamesCache = JSON.parse(fileContents);
         return gamesCache!;
-    } catch (error) {
+    } catch {
         // Fallback to network fetch (Works at runtime on Cloudflare)
         console.log('Falling back to network fetch for games.json');
         const res = await fetch(`${BASE_URL}/games.json`, { next: { revalidate: 3600 } });
@@ -47,9 +47,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     if (!game) return { title: 'Game Not Found' };
 
+    const cleanDescription = game.description 
+        ? (game.description.length > 155 ? `${game.description.slice(0, 152)}...` : game.description)
+        : `Play ${game.name} online for free. No download required. Rated ${parseFloat(game.rating).toFixed(1)}/5.`;
+
     return {
-        title: `${game.name} - Play Online for Free`,
-        description: `Play ${game.name} online for free. No download required. Rated ${parseFloat(game.rating).toFixed(1)}/5.`,
+        title: `${game.name} - Play Online for Free | SOP Games`,
+        description: cleanDescription,
         openGraph: {
             images: [game.image],
             url: `${BASE_URL}/game/${slug}`,
@@ -89,8 +93,8 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                     {
                         '@type': 'ListItem',
                         position: 2,
-                        name: 'Games',
-                        item: `${BASE_URL}/#catalog`,
+                        name: game.category || 'Games',
+                        item: `${BASE_URL}/category/${game.category ? game.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') : ''}`,
                     },
                     {
                         '@type': 'ListItem',
@@ -103,11 +107,10 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
             {
                 '@type': 'VideoGame',
                 name: game.name,
-                description: `Play ${game.name} online for free on SOP Games. No download required.`,
+                description: game.description || `Play ${game.name} online for free on SOP Games. No download required.`,
                 image: game.image,
                 url: `${BASE_URL}/game/${slug}`,
-                datePublished: '2023-01-01', // Fallback as we don't have date
-                genre: ['Game', 'Arcade', 'Casual'],
+                genre: [game.category || 'Game', ...(game.tags || [])],
                 playMode: 'SinglePlayer',
                 applicationCategory: 'Game',
                 operatingSystem: 'Any',
@@ -124,6 +127,14 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                     priceCurrency: 'USD',
                     availability: 'https://schema.org/InStock',
                 },
+                howTo: game.instructions ? {
+                    '@type': 'HowTo',
+                    name: `How to play ${game.name}`,
+                    step: [{
+                        '@type': 'HowToStep',
+                        text: game.instructions
+                    }]
+                } : undefined
             },
         ],
     };
@@ -179,7 +190,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                             <div>
                                 <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight drop-shadow-2xl text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">{game.name}</h1>
 
-                                <div className="flex flex-wrap items-center gap-4 text-sm">
+                                <div className="flex flex-wrap items-center gap-3 text-sm">
                                     <span className="bg-gradient-to-r from-primary/80 to-purple-500/80 text-white px-4 py-1.5 rounded-full font-bold shadow-lg shadow-primary/20 backdrop-blur-md border border-white/10">
                                         Free to Play
                                     </span>
@@ -187,21 +198,52 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                                         <Star className="w-4 h-4 fill-current" />
                                         <span className="font-bold">{parseFloat(game.rating).toFixed(1)}</span>
                                     </div>
+                                    {game.category && (
+                                        <Link 
+                                            href={`/category/${game.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} 
+                                            className="bg-white/5 hover:bg-white/10 text-white px-4 py-1.5 rounded-full font-bold border border-white/10 backdrop-blur-md transition-all"
+                                        >
+                                            {game.category}
+                                        </Link>
+                                    )}
                                     <span className="text-muted-foreground">HTML5 • Mobile Friendly</span>
                                 </div>
+
+                                {game.tags && game.tags.length > 0 && (
+                                    <div className="flex flex-wrap gap-2 mt-4">
+                                        {game.tags.map((tag: string) => (
+                                            <span key={tag} className="text-xs text-muted-foreground bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
+                                                #{tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
-                            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
-                                Play <strong>{game.name}</strong> instantly in your browser.
-                                No downloads, no installation using <span className="text-white font-semibold">SOP Games</span>.
-                                Experience seamless gameplay optimized for all devices.
-                            </p>
+                            <div className="text-lg text-gray-300 leading-relaxed max-w-3xl space-y-4">
+                                <p className="font-medium">
+                                    {game.description}
+                                </p>
+                                <p className="text-sm text-gray-400">
+                                    Play <strong>{game.name}</strong> instantly in your browser. No downloads, no installation required. Powered by <span className="text-white font-semibold">SOP Games</span>.
+                                </p>
+                            </div>
                         </div>
 
                         <div className="lg:col-span-1">
-                            <div className="p-6 rounded-3xl bg-card/20 backdrop-blur-xl border border-white/10 shadow-xl">
-                                <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-6">Game Controls</h3>
-                                <GameInteractions game={game} />
+                            <div className="p-6 rounded-3xl bg-card/20 backdrop-blur-xl border border-white/10 shadow-xl space-y-6">
+                                {game.instructions && (
+                                    <div>
+                                        <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-3">How to Play / Controls</h3>
+                                        <p className="text-sm text-gray-300 leading-relaxed bg-white/5 p-3.5 rounded-xl border border-white/5">
+                                            {game.instructions}
+                                        </p>
+                                    </div>
+                                )}
+                                <div className={game.instructions ? "border-t border-white/5 pt-6" : ""}>
+                                    <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Actions</h3>
+                                    <GameInteractions game={game} />
+                                </div>
                             </div>
                         </div>
                     </div>

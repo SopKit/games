@@ -1,0 +1,20 @@
+{
+  "id": "80053",
+  "name": "SportLoop",
+  "slug": "sportloop",
+  "description": "SportsLoop is a game designed for sport lovers who want to be into identifying the sport objects pretty fast. There is a stream of sports objects coming in this game from both left and right and your job is to collect and drap the required object to the place of collection. Do you love sports? This game will keep you involved.",
+  "instructions": "The white background sports object is the place where you have to bring similar object by dragging this increases your score ",
+  "category": "Sports",
+  "tags": [
+    "Clicker",
+    "Collecting",
+    "Football",
+    "Sport"
+  ],
+  "url": "https://html5.gamemonetize.co/gn0ceaxhgylhpx8uivtwqfxwtuxvjm8j/",
+  "embedUrl": "https://html5.gamemonetize.co/gn0ceaxhgylhpx8uivtwqfxwtuxvjm8j/",
+  "image": "https://img.gamemonetize.com/gn0ceaxhgylhpx8uivtwqfxwtuxvjm8j/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.6"
+}

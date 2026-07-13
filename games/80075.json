@@ -1,0 +1,19 @@
+{
+  "id": "80075",
+  "name": "ShapeNest",
+  "slug": "shapenest",
+  "description": "ShapeNest is a game of matching-3 complex patterns given in simple colors. You have to chain 3 or more to increase score and per level, there is a target given. If you meet the target in time, you win the levels. Simple shapes, fun levels :)",
+  "instructions": "Chain 3 ore more of same color-pattern ",
+  "category": "Puzzle",
+  "tags": [
+    "Color",
+    "Match 3",
+    "Puzzle"
+  ],
+  "url": "https://html5.gamemonetize.co/h4qnon6qs2da4g9b1vozh2erd2nfcfd9/",
+  "embedUrl": "https://html5.gamemonetize.co/h4qnon6qs2da4g9b1vozh2erd2nfcfd9/",
+  "image": "https://img.gamemonetize.com/h4qnon6qs2da4g9b1vozh2erd2nfcfd9/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.6"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "76843",
+  "name": "Labubu Tic Tac Toe",
+  "slug": "labubu-tic-tac-toe",
+  "description": "Labubu Tic Tac Toe takes the classic 3&times;3 tic-tac-toe board and adds a fun Labubu twist! Two players compete on the same grid, placing Labubu heads as they try to line up three in a row. Sounds simple? It is. But it&rsquo;s also incredibly addictive and fun to play!",
+  "instructions": "The goal of the game is simple place three Labubu symbols in a row before your opponent does Line them up horizontally vertically or diagonally to win If all nine squares are filled and no one has three in a row the game ends in a draw Reset the bo",
+  "category": "Puzzle",
+  "tags": [
+    "Arcade",
+    "Board",
+    "Brain",
+    "Fun",
+    "Labubu",
+    "Puzzle",
+    "Skill"
+  ],
+  "url": "https://html5.gamemonetize.co/fd6vt8inrlqc5nuvj1zmlqrizpebr212/",
+  "embedUrl": "https://html5.gamemonetize.co/fd6vt8inrlqc5nuvj1zmlqrizpebr212/",
+  "image": "https://img.gamemonetize.com/fd6vt8inrlqc5nuvj1zmlqrizpebr212/512x384.jpg",
+  "width": "854",
+  "height": "480",
+  "rating": "4.8"
+}

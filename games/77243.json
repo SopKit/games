@@ -1,0 +1,21 @@
+{
+  "id": "77243",
+  "name": "Cat Tic Tac Toe",
+  "slug": "cat-tic-tac-toe",
+  "description": "Cat Tic Tac Toe is a fun, casual strategy game where players compete against each other or an AI to form a line of three&mdash;horizontally, vertically, or diagonally&mdash;on a 3x3 grid. Instead of traditional Xs and Os, the game uses cute cat-themed symbols, making it engaging and visually appealing for players of all ages.",
+  "instructions": "Tap to Place Cat ndash Simply tap any empty square on the 3x3 grid to place your cat symbol Undo Optional ndash If enabled tap the ldquo Undo rdquo button to remove your last move Restart Game ndash Tap the ldquo Restart rdquo or ldquo New",
+  "category": "Puzzle",
+  "tags": [
+    "Arcade",
+    "Brain",
+    "Cat",
+    "Puzzle",
+    "Skill"
+  ],
+  "url": "https://html5.gamemonetize.co/i8def5p3twouzpx6swp5gl46w2gzy392/",
+  "embedUrl": "https://html5.gamemonetize.co/i8def5p3twouzpx6swp5gl46w2gzy392/",
+  "image": "https://img.gamemonetize.com/i8def5p3twouzpx6swp5gl46w2gzy392/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.1"
+}

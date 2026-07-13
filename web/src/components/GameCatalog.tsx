@@ -7,7 +7,7 @@ import { Game } from '../types';
 import { GameGrid } from './GameGrid';
 import { Search, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 
-const fetcher = (url: string): Promise<any> => fetch(url).then((res) => res.json());
+const fetcher = (url: string): Promise<Game[]> => fetch(url).then((res) => res.json());
 
 const GAMES_PER_PAGE = 50;
 
@@ -70,7 +70,7 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
         }
 
         return result;
-    }, [initialGames, search, sort]);
+    }, [games, initialGames, search, sort]);
 
     const totalPages = Math.ceil(filteredGames.length / GAMES_PER_PAGE);
     const currentGames = filteredGames.slice(

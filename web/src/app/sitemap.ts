@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const filePath = path.join(process.cwd(), 'public', 'games.json');
         const fileContents = await fs.readFile(filePath, 'utf8');
         games = JSON.parse(fileContents);
-    } catch (error) {
+    } catch {
         // Fallback to network fetch
         try {
             const response = await fetch(`${BASE_URL}/games.json`, { next: { revalidate: 3600 } });

@@ -1,0 +1,20 @@
+{
+  "id": "80109",
+  "name": "HueHearts",
+  "slug": "huehearts",
+  "description": "HueHearts is a game where there is a rectangular array of hearts which has to be matched against 4 incoming flowers colors. The top of the line in the array need to be the same color as corresponding incoming flower. You can move the player by arrow keys.",
+  "instructions": "Use arrow key to move the hearts as needed ",
+  "category": "Puzzle",
+  "tags": [
+    "1 Player",
+    "Clicker",
+    "Color",
+    "Matching"
+  ],
+  "url": "https://html5.gamemonetize.co/b2lg38duvcy66q4uuroz7kvntgo1gv8c/",
+  "embedUrl": "https://html5.gamemonetize.co/b2lg38duvcy66q4uuroz7kvntgo1gv8c/",
+  "image": "https://img.gamemonetize.com/b2lg38duvcy66q4uuroz7kvntgo1gv8c/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.7"
+}

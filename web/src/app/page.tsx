@@ -16,7 +16,7 @@ async function getGames() {
     const filePath = path.join(process.cwd(), 'public', 'games.json');
     const fileContents = await fs.readFile(filePath, 'utf8');
     return JSON.parse(fileContents) as Game[];
-  } catch (error) {
+  } catch {
     const res = await fetch(`${BASE_URL}/games.json`, { next: { revalidate: 3600 } });
     if (!res.ok) throw new Error('Failed to fetch game data');
     return res.json() as Promise<Game[]>;
@@ -82,16 +82,16 @@ export default async function Home() {
         <div className="relative z-20 text-center max-w-4xl px-4 space-y-6">
           <div className="flex items-center justify-center gap-2 mb-4 animate-fade-in-up">
             <span className="px-3 py-1 rounded-full bg-primary/20 text-primary border border-primary/20 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
-              Welcome to the Future of Gaming
+              SOP Games Portal
             </span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white drop-shadow-2xl animate-fade-in-up delay-100">
-            Play Without <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">Limits</span>
+            Instant HTML5 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">Arcade</span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200">
-            Dive into thousands of premium titles instantly. No downloads, no lag, just pure gameplay.
+            Access a catalog of high-quality, embeddable HTML5 games licensed directly from developers. Play instantly with no downloads and no installations.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-fade-in-up delay-300">
@@ -99,7 +99,7 @@ export default async function Home() {
               <Gamepad2 className="w-5 h-5" />
               Start Playing
             </Link>
-            <Link href="/game/Shop-Mine-Deep" className="px-8 py-4 rounded-full bg-white/10 text-white font-semibold text-lg hover:bg-white/20 transition-all backdrop-blur-md border border-white/10 flex items-center gap-2">
+            <Link href="/game/spiny-ninja" className="px-8 py-4 rounded-full bg-white/10 text-white font-semibold text-lg hover:bg-white/20 transition-all backdrop-blur-md border border-white/10 flex items-center gap-2">
               <Sparkles className="w-5 h-5" />
               Featured Game
             </Link>
@@ -111,15 +111,15 @@ export default async function Home() {
           <div className="flex items-center gap-3">
             <Trophy className="w-6 h-6 text-yellow-500" />
             <div className="flex flex-col text-left">
-              <span className="text-white font-bold text-lg">14,000+</span>
-              <span className="text-xs uppercase tracking-wider">Games Available</span>
+              <span className="text-white font-bold text-lg">2,000+</span>
+              <span className="text-xs uppercase tracking-wider">Licensed Games</span>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <Zap className="w-6 h-6 text-blue-500" />
             <div className="flex flex-col text-left">
-              <span className="text-white font-bold text-lg">Instant</span>
-              <span className="text-xs uppercase tracking-wider">No Downloads</span>
+              <span className="text-white font-bold text-lg">Instant Play</span>
+              <span className="text-xs uppercase tracking-wider">No Setup Required</span>
             </div>
           </div>
         </div>

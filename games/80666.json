@@ -1,0 +1,24 @@
+{
+  "id": "80666",
+  "name": "Snake Chain Escape",
+  "slug": "snake-chain-escape",
+  "description": "Snake Chain Escape is a fun and challenging puzzle game where colorful snakes made of connected circles are tangled together and waiting to escape. The black circle marks each snakes head, helping you identify its direction. Your task is to find the snakes with clear paths and remove them in the correct order. Every snake you clear opens new opportunities, but one wrong move can cost a life. Think ahead, clear the chains, and free every snake.",
+  "instructions": "Tap a snake to remove it Only snakes with a clear path can be removed Removing one snake may free others Wrong selections cost a life Use Hint to reveal a removable snake ",
+  "category": "Puzzle",
+  "tags": [
+    "2026 games",
+    "Best",
+    "Casual",
+    "Crazy",
+    "Hypercasual",
+    "Mind",
+    "Puzzle",
+    "Snake"
+  ],
+  "url": "https://html5.gamemonetize.co/5jkuuogq3xxqmbtjxmkhsgt1cbwswtmc/",
+  "embedUrl": "https://html5.gamemonetize.co/5jkuuogq3xxqmbtjxmkhsgt1cbwswtmc/",
+  "image": "https://img.gamemonetize.com/5jkuuogq3xxqmbtjxmkhsgt1cbwswtmc/512x384.jpg",
+  "width": "720",
+  "height": "1280",
+  "rating": "4.3"
+}

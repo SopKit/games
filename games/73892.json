@@ -1,0 +1,20 @@
+{
+  "id": "73892",
+  "name": "Gravity Pulse",
+  "slug": "gravity-pulse",
+  "description": "Gravity Pulse is a minimalist arcade survival game where the player navigates a small arena, balancing risk and reward. The game is built around Attractor Fields &mdash; invisible forces that guide player behavior, creating flow, tension, and emergent mastery. Core Fun: Discover invariants in a chaotic system while being subtly guided by invisible attractor fields. Player Goal: Survive as long as possible and collect points.",
+  "instructions": "Move WASD Arrows Mouse Touch Dash Space L-Click Button Pause ESC Button",
+  "category": "Arcade",
+  "tags": [
+    ".io Games",
+    "1 Player",
+    "Action",
+    "survival"
+  ],
+  "url": "https://html5.gamemonetize.co/4ou77fx68xo237ynuy4ct3djbzbnywxe/",
+  "embedUrl": "https://html5.gamemonetize.co/4ou77fx68xo237ynuy4ct3djbzbnywxe/",
+  "image": "https://img.gamemonetize.com/4ou77fx68xo237ynuy4ct3djbzbnywxe/512x384.jpg",
+  "width": "800",
+  "height": "450",
+  "rating": "4.5"
+}

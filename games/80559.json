@@ -1,0 +1,20 @@
+{
+  "id": "80559",
+  "name": "DotDrift",
+  "slug": "dotdrift",
+  "description": "DotDrift is a game where a chain of colored dots is moving vertically and you have to match by clicking the required dot with the same color in your horizontal chain.If same colored dot is matched, score increases and you have a new required dot in your horizontal chain. Have fun!",
+  "instructions": "Match first dot from the horizontal chain against moving vertical chain of dots same colors required ",
+  "category": "Hypercasual",
+  "tags": [
+    "Block",
+    "Click",
+    "Matching",
+    "Puzzle"
+  ],
+  "url": "https://html5.gamemonetize.co/5kk6e4m13ex7vkj7cmrd3me52by7ue34/",
+  "embedUrl": "https://html5.gamemonetize.co/5kk6e4m13ex7vkj7cmrd3me52by7ue34/",
+  "image": "https://img.gamemonetize.com/5kk6e4m13ex7vkj7cmrd3me52by7ue34/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.6"
+}

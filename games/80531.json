@@ -1,0 +1,20 @@
+{
+  "id": "80531",
+  "name": "Math Multiply Two",
+  "slug": "math-multiply-two",
+  "description": "Math Multiply-Two is a game where you are given memory cards from 1 to 18 and you have other type of cards with 2 multiplication (like for 18, you have 9*2 and for 17 you have 8*2+1). This is the twist in game with even-odd confusion and you have to be smart-enough to solve this. Have fun!",
+  "instructions": "Match the cards with same sums ",
+  "category": "Puzzle",
+  "tags": [
+    "Click",
+    "Math",
+    "Memory",
+    "Puzzle"
+  ],
+  "url": "https://html5.gamemonetize.co/c6kqotpnfdsh12oesnrxk311ax9c187q/",
+  "embedUrl": "https://html5.gamemonetize.co/c6kqotpnfdsh12oesnrxk311ax9c187q/",
+  "image": "https://img.gamemonetize.com/c6kqotpnfdsh12oesnrxk311ax9c187q/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.0"
+}

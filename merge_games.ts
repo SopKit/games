@@ -25,9 +25,11 @@ async function mergeGames() {
         }
 
         console.log(`Merged ${games.length} games.`);
-        console.log(`Writing to ${OUTPUT_FILE}...`);
+        console.log(`Writing to ${OUTPUT_FILE} and web/public/${OUTPUT_FILE}...`);
 
-        await write(OUTPUT_FILE, JSON.stringify(games, null, 2));
+        const jsonString = JSON.stringify(games, null, 2);
+        await write(OUTPUT_FILE, jsonString);
+        await write(join("web", "public", OUTPUT_FILE), jsonString);
 
         console.log("Done!");
 

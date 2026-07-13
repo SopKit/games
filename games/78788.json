@@ -1,0 +1,18 @@
+{
+  "id": "78788",
+  "name": "Fruit Bubble Pop",
+  "slug": "fruit-bubble-pop",
+  "description": "Features: - 7 types of fruits with combo merging - Online ranking (Daily/Weekly/Monthly) - Badge collection system - Fever Time for 2x score bonus - Works on both mobile and desktop SDK updated: ads show on Play and Game Over via sdk.showBanner(). Default language is English.",
+  "instructions": "Tap or click to select a lane and drop the fruit ",
+  "category": "Puzzle",
+  "tags": [
+    "Hypercasual",
+    "Puzzle"
+  ],
+  "url": "https://html5.gamemonetize.co/bq5jxgqtpkntz3g87gc4h1qmd0vcsqza/",
+  "embedUrl": "https://html5.gamemonetize.co/bq5jxgqtpkntz3g87gc4h1qmd0vcsqza/",
+  "image": "https://img.gamemonetize.com/bq5jxgqtpkntz3g87gc4h1qmd0vcsqza/512x384.jpg",
+  "width": "480",
+  "height": "720",
+  "rating": "4.6"
+}

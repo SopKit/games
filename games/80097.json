@@ -1,0 +1,20 @@
+{
+  "id": "80097",
+  "name": "Sporty Viper",
+  "slug": "sporty-viper",
+  "description": "Sporty Viper is a sporty version of snake-game where in place of food, the snake has to collect sports items like balls, table-tennis items, gloves etc to earn points. You as well have to collect keys to go to next levels. Each level has their challenges. Play well!",
+  "instructions": "Collect sports-items and keys on time ",
+  "category": "Sports",
+  "tags": [
+    "Casual",
+    "Collecting",
+    "Snake",
+    "Sports"
+  ],
+  "url": "https://html5.gamemonetize.co/gd7itozno5q3yf140ztoiy3uxmwo3211/",
+  "embedUrl": "https://html5.gamemonetize.co/gd7itozno5q3yf140ztoiy3uxmwo3211/",
+  "image": "https://img.gamemonetize.com/gd7itozno5q3yf140ztoiy3uxmwo3211/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.6"
+}

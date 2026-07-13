@@ -1,0 +1,21 @@
+{
+  "id": "78418",
+  "name": "Word Ladder",
+  "slug": "word-ladder",
+  "description": "A satisfying word puzzle game where you transform one word into another by changing one letter at a time. Every step must form a valid word. Solve efficiently to earn maximum rewards.",
+  "instructions": "Objective Solve word ladders by transforming one word into another one letter at a time Gameplay bull Replace a single letter to form a new word bull Each step must be a valid word bull Plan your path carefully to avoid dead ends bull Complete l",
+  "category": "Puzzle",
+  "tags": [
+    "1 Player",
+    "2D",
+    "Casual",
+    "Puzzle",
+    "Word"
+  ],
+  "url": "https://html5.gamemonetize.co/1n7aeyhbtz2ygqvh8lkh2mu9ovbxb13a/",
+  "embedUrl": "https://html5.gamemonetize.co/1n7aeyhbtz2ygqvh8lkh2mu9ovbxb13a/",
+  "image": "https://img.gamemonetize.com/1n7aeyhbtz2ygqvh8lkh2mu9ovbxb13a/512x384.jpg",
+  "width": "1080",
+  "height": "1920",
+  "rating": "5.0"
+}

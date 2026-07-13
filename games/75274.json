@@ -1,0 +1,19 @@
+{
+  "id": "75274",
+  "name": "Minesweeper: Find Bombs",
+  "slug": "minesweeper-find-bombs",
+  "description": "Minesweeper - Find Bombs is a classic puzzle experience that challenges your logic and attention to detail. Carefully analyze the grid, reveal hidden clues, and locate every bomb without making a mistake. Clear all bombs to pass the level and master this timeless brain teaser. Made with GODOT 4.5",
+  "instructions": "HOW TO PLAY Left Click Open the cells Long Press Plant remove a flag Goal Clear the field without hitting a mine ",
+  "category": "Puzzle",
+  "tags": [
+    "Bomb",
+    "Casual",
+    "Puzzle"
+  ],
+  "url": "https://html5.gamemonetize.co/gqr5252tlvkb64cla5ku8td29k0uc23a/",
+  "embedUrl": "https://html5.gamemonetize.co/gqr5252tlvkb64cla5ku8td29k0uc23a/",
+  "image": "https://img.gamemonetize.com/gqr5252tlvkb64cla5ku8td29k0uc23a/512x384.jpg",
+  "width": "1280",
+  "height": "720",
+  "rating": "4.1"
+}

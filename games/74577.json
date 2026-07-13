@@ -1,0 +1,20 @@
+{
+  "id": "74577",
+  "name": "Prime Sudoku",
+  "slug": "prime-sudoku",
+  "description": "Sudoku is a relaxing yet challenging number puzzle game made for Jio feature phones. Fill the 9&times;9 grid with numbers 1 to 9 without repeating any in a row, column, or 3&times;3 box. Choose from different difficulty levels and test your logic skills.",
+  "instructions": "Start Sudoku by selecting a difficulty level Fill each row column and 3x3 grid with numbers from 1 to 9 without repeating any number Tap a cell to select it then choose a number to fill in Use the erase button to clear mistakes The game ends when a",
+  "category": "Puzzle",
+  "tags": [
+    "digital circus",
+    "Number",
+    "Puzzle",
+    "Sudoku"
+  ],
+  "url": "https://html5.gamemonetize.co/emtp8idjxf95f5b37mhsn1p7muehu9v8/",
+  "embedUrl": "https://html5.gamemonetize.co/emtp8idjxf95f5b37mhsn1p7muehu9v8/",
+  "image": "https://img.gamemonetize.com/emtp8idjxf95f5b37mhsn1p7muehu9v8/512x384.jpg",
+  "width": "360",
+  "height": "640",
+  "rating": "4.8"
+}

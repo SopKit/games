@@ -1,0 +1,19 @@
+{
+  "id": "78012",
+  "name": "Ballz Shooter",
+  "slug": "ballz-shooter",
+  "description": "Falling Ball is a frantic arcade game in which you need to shoot balls down the screen to take health off of the static circles below. When you shoot, the balls gravity will make them cascade down the screen, every time they come into contact with the circles it will subtract from the circles value.",
+  "instructions": "Mouse click or tap to play",
+  "category": "Shooting",
+  "tags": [
+    "Ball",
+    "Bubble Shooter",
+    "Shooter"
+  ],
+  "url": "https://html5.gamemonetize.co/0xi417nczhb62bqxfzp0wxy5ogochmie/",
+  "embedUrl": "https://html5.gamemonetize.co/0xi417nczhb62bqxfzp0wxy5ogochmie/",
+  "image": "https://img.gamemonetize.com/0xi417nczhb62bqxfzp0wxy5ogochmie/512x384.jpg",
+  "width": "720",
+  "height": "1280",
+  "rating": "4.0"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "73211",
+  "name": "Memory Lane",
+  "slug": "memory-lane",
+  "description": "Your goal in each level is to reach the Goal Platform without falling or touching enemies. Levels are played in two phases. A. Reveal Phase: Duration: Short preview at the start of each level &bull; All platforms become visible. &bull; You cannot move. &bull; Study the layout, paths, traps, and pickups. Your task: Remember what you see. ________________________________________ B. Action Phase: &bull; All memory phase platforms become invisible unless they are marked to stay visible. &bull; Touching platforms reveals them permanently. Your task: Reach the goal using your memory and reflexes.",
+  "instructions": "Movement bull Left Right A D or Left Right Arrow keys bull Jump Tap space once to jump bull Hold space for a higher jump arc bull Double Jump available only when powered up Mobile Controls Touch buttons appear automatically on mobile devices ",
+  "category": "Puzzle",
+  "tags": [
+    "1 Player",
+    "2D",
+    "Arcade",
+    "Jumping",
+    "Memory",
+    "Pixel",
+    "Platform",
+    "Puzzle",
+    "Retro"
+  ],
+  "url": "https://html5.gamemonetize.co/8ww1qvuf37fo6hnmscv4m3hja4f096he/",
+  "embedUrl": "https://html5.gamemonetize.co/8ww1qvuf37fo6hnmscv4m3hja4f096he/",
+  "image": "https://img.gamemonetize.com/8ww1qvuf37fo6hnmscv4m3hja4f096he/512x384.jpg",
+  "width": "1920",
+  "height": "1080",
+  "rating": "4.6"
+}

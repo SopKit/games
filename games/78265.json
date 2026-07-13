@@ -1,0 +1,19 @@
+{
+  "id": "78265",
+  "name": "Color Pixel Flow",
+  "slug": "color-pixel-flow",
+  "description": "Send pigs onto the conveyor to rain balls onto matching pixel cubes. Each pig has a number above its head&mdash;this is its ammo and determines how many hits it delivers. Once a pig runs out, it leaves the stage. If it still has ammo left, it moves into one of five waiting slots and can be sent back onto the conveyor for another round. The conveyor has limited capacity, so timing matters&mdash;send too many pigs at once and you&rsquo;ll have to wait. Choose the right order, manage the flow, and break down the cubes step by step. A simple, satisfying loop: tap &rarr; launch &rarr; clear &rarr; repeat.",
+  "instructions": "Tap a pig to deploy it onto the conveyor Tap pigs in waiting slots to redeploy them Pigs automatically target matching color cubes Manage timing to avoid exceeding conveyor capacity",
+  "category": "Puzzle",
+  "tags": [
+    "Block",
+    "Casual",
+    "Puzzle"
+  ],
+  "url": "https://html5.gamemonetize.co/awnouc0jesu3jx493fp7zrmyoxs3o69w/",
+  "embedUrl": "https://html5.gamemonetize.co/awnouc0jesu3jx493fp7zrmyoxs3o69w/",
+  "image": "https://img.gamemonetize.com/awnouc0jesu3jx493fp7zrmyoxs3o69w/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.0"
+}

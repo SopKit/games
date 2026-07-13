@@ -1,0 +1,20 @@
+{
+  "id": "80457",
+  "name": "Math Pair Pop",
+  "slug": "math-pair-pop",
+  "description": "Math Pair Pop : This is a game where you have to remember cards with numbers N written on them and find the N-1+1 card for matching this. This is the big twist we gave for math lovers. Have fun:)",
+  "instructions": "Match N-card with N-1 1 card as N-card is never going to have a pair of N-card ",
+  "category": "Puzzle",
+  "tags": [
+    "Math",
+    "Memory",
+    "Number",
+    "Puzzle"
+  ],
+  "url": "https://html5.gamemonetize.co/rv3qnhmqvx7x2gii78wvo4cmvlcscx6r/",
+  "embedUrl": "https://html5.gamemonetize.co/rv3qnhmqvx7x2gii78wvo4cmvlcscx6r/",
+  "image": "https://img.gamemonetize.com/rv3qnhmqvx7x2gii78wvo4cmvlcscx6r/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.3"
+}

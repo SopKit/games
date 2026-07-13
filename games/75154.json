@@ -1,0 +1,19 @@
+{
+  "id": "75154",
+  "name": "Tap Out Gallery",
+  "slug": "tap-out-gallery",
+  "description": "Dive into a clever arrow-block puzzle where every tile points the way. Click blocks to remove them, but plan ahead: each removal changes the route through the stack, opening new options or trapping you in dead ends. Web Dev <a href='https://www.kizi10.org/'>https://www.kizi10.org/</a> Clear the board by creating smooth directional chains, using green starters and orange movers to guide your progress.",
+  "instructions": "Mouse click or tap to play",
+  "category": "Arcade",
+  "tags": [
+    "Arcade",
+    "unity",
+    "WebGL"
+  ],
+  "url": "https://html5.gamemonetize.co/qtniwco62z5nnhql0vs9nl6wqvkd056r/",
+  "embedUrl": "https://html5.gamemonetize.co/qtniwco62z5nnhql0vs9nl6wqvkd056r/",
+  "image": "https://img.gamemonetize.com/qtniwco62z5nnhql0vs9nl6wqvkd056r/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.2"
+}

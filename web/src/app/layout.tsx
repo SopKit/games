@@ -25,7 +25,7 @@ export const viewport = {
 const BASE_URL = 'http://sopkit.github.io/games';
 
 export const metadata: Metadata = {
-	metadataBase: new URL('http://sopkit.github.io/games'),
+	metadataBase: new URL(BASE_URL),
 	icons: {
 		icon: '/favicon.svg',
 		apple: '/games/apple-touch-icon.png',

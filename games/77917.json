@@ -1,0 +1,26 @@
+{
+  "id": "77917",
+  "name": "AIchessgame",
+  "slug": "aichessgame",
+  "description": "Play Chess against a powerful AI engine. Choose to play as White or Black, get real-time position evaluation, and use the Take back feature to undo moves. A clean, fast chess experience for all skill levels.",
+  "instructions": "Click a piece to select it then click the destination square to move Legal moves are highlighted automatically Use the Take back button to undo your last move The eval bar on the left shows who is winning ",
+  "category": "Puzzle",
+  "tags": [
+    "1 Player",
+    "Ai Games",
+    "Battle",
+    "Board",
+    "Brain",
+    "Card",
+    "Casual",
+    "Classic",
+    "HTML5",
+    "Turn Based"
+  ],
+  "url": "https://html5.gamemonetize.co/5huu0n7am62jtq14es7ncpdf1mjom3o2/",
+  "embedUrl": "https://html5.gamemonetize.co/5huu0n7am62jtq14es7ncpdf1mjom3o2/",
+  "image": "https://img.gamemonetize.com/5huu0n7am62jtq14es7ncpdf1mjom3o2/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.4"
+}

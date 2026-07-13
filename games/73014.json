@@ -1,0 +1,20 @@
+{
+  "id": "73014",
+  "name": "Snakey: Hunters Arena",
+  "slug": "snakey-hunters-arena",
+  "description": "Advanced snake game with power-ups, abilities, hunters, and progressive levels. Collect food, avoid obstacles, and survive as long as you can! LEVEL PROGRESSION Level 0-4: Basic gameplay, increasing speed Level 5+: Obstacles appear (rocks, spikes, portals) Level 10+: Armed hunters start appearing and shooting bullets Every 30 seconds: Level increases, more obstacles and hunters spawn",
+  "instructions": "Desktop Arrow Keys - Move snake uarr darr larr rarr Hold Arrow Keys - Speed boost 60 faster Mobile Touch Swipe - Move snake in desired direction Hold Swipe - Speed boost",
+  "category": "Hypercasual",
+  "tags": [
+    "2D",
+    "Casual",
+    "Hypercasual",
+    "Snake"
+  ],
+  "url": "https://html5.gamemonetize.co/qjusux5oqqbsva2z8x2fu24h3afnpsst/",
+  "embedUrl": "https://html5.gamemonetize.co/qjusux5oqqbsva2z8x2fu24h3afnpsst/",
+  "image": "https://img.gamemonetize.com/qjusux5oqqbsva2z8x2fu24h3afnpsst/512x384.jpg",
+  "width": "800",
+  "height": "800",
+  "rating": "4.7"
+}

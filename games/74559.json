@@ -1,0 +1,27 @@
+{
+  "id": "74559",
+  "name": "Galaxy 2048",
+  "slug": "galaxy-2048",
+  "description": "Galaxy 2048 is a fun and addictive puzzle game inspired by the classic 2048 gameplay. Swipe the tiles to combine numbers and create higher values as you aim to reach the ultimate 2048 tile. With a clean galaxy-themed design and smooth controls, the game is easy to learn but challenging to master. Perfect for relaxing your mind while training your logic and concentration skills. Play anytime on desktop or mobile devices and enjoy endless number-merging fun!",
+  "instructions": "Controls - Swipe Up Down Left Right to move the tiles - Tiles with the same number merge into one - Reach 2048 to win the game ",
+  "category": "Puzzle",
+  "tags": [
+    "1 Player",
+    "2D",
+    "Block",
+    "Brain",
+    "Casual",
+    "Classic",
+    "HTML5",
+    "Logic",
+    "Math",
+    "Mobile",
+    "Number"
+  ],
+  "url": "https://html5.gamemonetize.co/wqrjoibnw3f6kjr8gjcy6pdypydad9h8/",
+  "embedUrl": "https://html5.gamemonetize.co/wqrjoibnw3f6kjr8gjcy6pdypydad9h8/",
+  "image": "https://img.gamemonetize.com/wqrjoibnw3f6kjr8gjcy6pdypydad9h8/512x384.jpg",
+  "width": "800",
+  "height": "600",
+  "rating": "4.1"
+}

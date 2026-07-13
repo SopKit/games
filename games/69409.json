@@ -1,0 +1,18 @@
+{
+  "id": "69409",
+  "name": "Balloon Pop Addition 3D Game",
+  "slug": "balloon-pop-addition-3d-game",
+  "description": "This is an addition game which requires user to click on the some that has the lowest value, then increased value and so on... When user click on the correct answer, they score and when they click on wrong, they get score deduction.",
+  "instructions": "How to Play 1 Select a difficulty level to start the game 2 Pop balloons in order from the smallest sum to the largest sum 3 Correct pops earn points wrong ones deduct points 4 Complete all sets to advance to the next level ",
+  "category": "Puzzle",
+  "tags": [
+    "Educational",
+    "Math"
+  ],
+  "url": "https://html5.gamemonetize.co/38f1ghgchix4htcolh0gygly2edwni0c/",
+  "embedUrl": "https://html5.gamemonetize.co/38f1ghgchix4htcolh0gygly2edwni0c/",
+  "image": "https://img.gamemonetize.com/38f1ghgchix4htcolh0gygly2edwni0c/512x384.jpg",
+  "width": "960",
+  "height": "800",
+  "rating": "5.0"
+}
