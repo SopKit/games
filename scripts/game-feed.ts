@@ -167,6 +167,8 @@ export function normalizeGameFeed(payload: unknown): NormalizeResult {
   return { games, skipped };
 }
 
+class NonRetryableHttpError extends Error {}
+
 export async function fetchJsonWithRetry(
   url: string,
   fetchImpl: typeof fetch = fetch,
@@ -191,7 +193,8 @@ export async function fetchJsonWithRetry(
       if (!response.ok) {
         const retryable = response.status === 408 || response.status === 429 || response.status >= 500;
         const error = new Error(`Feed request failed with HTTP ${response.status}.`);
-        if (!retryable || attempt === attempts) throw error;
+        if (!retryable) throw new NonRetryableHttpError(error.message);
+        if (attempt === attempts) throw error;
         const retryAfter = Number(response.headers.get("retry-after"));
         const delay = Number.isFinite(retryAfter) && retryAfter > 0
           ? Math.min(maxDelayMs, retryAfter * 1000)
@@ -202,6 +205,7 @@ export async function fetchJsonWithRetry(
 
       return await response.json();
     } catch (error) {
+      if (error instanceof NonRetryableHttpError) throw error;
       lastError = error;
       if (attempt === attempts) break;
       const delay = Math.min(maxDelayMs, baseDelayMs * attempt);
