@@ -134,8 +134,11 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
     const currentGames = filteredGames.slice((page - 1) * GAMES_PER_PAGE, page * GAMES_PER_PAGE);
 
     useEffect(() => {
-        if (page !== requestedPage) updateState('page', String(page));
-    }, [page, requestedPage]);
+        if (page === requestedPage) return;
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('page', String(page));
+        router.replace(pathname + '?' + params.toString(), { scroll: false });
+    }, [page, requestedPage, searchParams, router, pathname]);
 
     return (
         <div className="space-y-8 animate-fade-in-up delay-300">
