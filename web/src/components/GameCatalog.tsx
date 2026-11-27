@@ -19,6 +19,14 @@ const fetcher = async (url: string): Promise<Game[]> => {
 
 const GAMES_PER_PAGE = 50;
 
+function getSortableRating(game: Game): number {
+    const rating = Number.parseFloat(game.rating ?? "");
+    const ratingCount = (game as Game & { ratingCount?: number }).ratingCount;
+    if (!Number.isFinite(rating) || rating < 1 || rating > 5) return -1;
+    if (!Number.isSafeInteger(ratingCount) || (ratingCount ?? 0) <= 0) return -1;
+    return rating;
+}
+
 interface GameCatalogProps {
     initialGames: Game[];
 }
@@ -113,12 +121,7 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
         }
 
         if (sort === 'rating') {
-            result.sort((a, b) => {
-                const ratingA = Number.parseFloat(a.rating);
-                const ratingB = Number.parseFloat(b.rating);
-                return (Number.isFinite(ratingB) ? ratingB : -1) -
-                    (Number.isFinite(ratingA) ? ratingA : -1);
-            });
+            result.sort((a, b) => getSortableRating(b) - getSortableRating(a));
         } else {
             result.sort((a, b) => {
                 const idA = Number(a.id);
