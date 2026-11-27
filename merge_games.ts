@@ -118,6 +118,13 @@ export async function mergeGameDirectory(rootDirectory = process.cwd()): Promise
     } catch (error) {
       throw new Error(`Could not parse ${file}; refusing to publish an incomplete catalog. ${error instanceof Error ? error.message : String(error)}`);
     }
+    if (!isCatalogGame(value)) {
+      throw new Error(`Invalid game record in source file ${file}.`);
+    }
+    const filenameId = path.basename(file, path.extname(file));
+    if (filenameId !== value.id) {
+      throw new Error(`Source filename ${file} does not match game ID ${value.id}.`);
+    }
     parsed.push(value);
   }
 

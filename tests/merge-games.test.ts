@@ -16,6 +16,22 @@ const game = (id: string, slug = `game-${id}`) => ({
   embedUrl: `https://games.example.test/${id}`,
   image: `https://images.example.test/${id}.jpg`,
   tags: [],
+  test("rejects source filenames that do not match the record ID", async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), "sopgames-merge-"));
+    try {
+      await mkdir(path.join(root, "games"));
+      await mkdir(path.join(root, "web", "public"), { recursive: true });
+      await writeFile(path.join(root, "games", "wrong-name.json"), JSON.stringify(game("1")));
+      await writeFile(path.join(root, "games.json"), "previous-root");
+      await writeFile(path.join(root, "web", "public", "games.json"), "previous-web");
+
+      await expect(mergeGameDirectory(root)).rejects.toThrow("does not match game ID");
+      expect(await readFile(path.join(root, "games.json"), "utf8")).toBe("previous-root");
+      expect(await readFile(path.join(root, "web", "public", "games.json"), "utf8")).toBe("previous-web");
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
 });
 
 describe("catalog validation", () => {
