@@ -81,4 +81,36 @@ describe("downloadImages", () => {
       await rm(root, { recursive: true, force: true });
     }
   });
+  test("respects the configured concurrency limit", async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), "sopgames-images-"));
+    let active = 0;
+    let maximumActive = 0;
+    try {
+      const fakeFetch: typeof fetch = async () => {
+        active += 1;
+        maximumActive = Math.max(maximumActive, active);
+        await new Promise((resolve) => setTimeout(resolve, 10));
+        active -= 1;
+        return new Response(jpeg, {
+          status: 200,
+          headers: { "content-type": "image/jpeg", "content-length": String(jpeg.length) },
+        });
+      };
+      const games = Array.from({ length: 5 }, (_, index) => ({
+        slug: `puzzle-${index}`,
+        image: `https://img.gamemonetize.com/abc/${index}.jpg`,
+      }));
+
+      const result = await downloadImages(games, root, {
+        fetchImpl: fakeFetch,
+        concurrency: 2,
+      });
+
+      expect(result).toEqual({ downloaded: 5, skipped: 0, failed: 0 });
+      expect(maximumActive).toBe(2);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
 });
