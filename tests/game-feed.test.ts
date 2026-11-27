@@ -28,6 +28,7 @@ describe("normalizeGameFeed", () => {
     expect(result.games).toHaveLength(1);
     expect(result.games[0]?.slug).toBe("puzzle-hero");
     expect(result.games[0]?.tags).toEqual(["Logic", "Brain"]);
+    expect(result.games[0]?.rating).toBeUndefined();
     expect(result.skipped).toHaveLength(0);
   });
 

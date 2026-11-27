@@ -23,7 +23,6 @@ export interface GameRecord {
   image: string;
   width: string;
   height: string;
-  rating: string;
 }
 
 export interface NormalizeResult {
@@ -144,9 +143,6 @@ export function normalizeGameFeed(payload: unknown): NormalizeResult {
     seenIds.add(id);
     seenSlugs.add(slug);
 
-    const ratingSeed = Number.parseInt(id, 10);
-    const rating = (4 + ((Number.isFinite(ratingSeed) ? ratingSeed : 0) % 11) / 10).toFixed(1);
-
     games.push({
       id,
       name,
@@ -160,7 +156,6 @@ export function normalizeGameFeed(payload: unknown): NormalizeResult {
       image,
       width: dimension(item.width, "800"),
       height: dimension(item.height, "600"),
-      rating,
     });
   });
 
