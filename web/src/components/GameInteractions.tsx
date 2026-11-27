@@ -3,65 +3,54 @@
 import { useState, useEffect } from 'react';
 import { Maximize2, Share2, Code, Check, Star } from 'lucide-react';
 import { Game } from '../types';
+import {
+    getBrowserStorage,
+    readGameList,
+    recordGamePlay,
+    toggleFavorite as updateFavorite,
+} from '../lib/browser-storage';
 
 export function GameInteractions({ game }: { game: Game }) {
     const [copied, setCopied] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
 
     useEffect(() => {
-        // Track recently played games in localStorage
-        const recentlyPlayedRaw = localStorage.getItem('recently-played');
-        let recentlyPlayedList: Game[] = recentlyPlayedRaw ? JSON.parse(recentlyPlayedRaw) : [];
-        
-        recentlyPlayedList = recentlyPlayedList.filter((g) => g.slug !== game.slug);
-        recentlyPlayedList.unshift(game);
-        if (recentlyPlayedList.length > 12) {
-            recentlyPlayedList = recentlyPlayedList.slice(0, 12);
-        }
-        localStorage.setItem('recently-played', JSON.stringify(recentlyPlayedList));
+        const storage = getBrowserStorage();
+        if (!storage) return;
 
-        // Track play counts in localStorage
-        const mostPlayedRaw = localStorage.getItem('most-played');
-        const mostPlayedMap: Record<string, { game: Game; playCount: number }> = mostPlayedRaw ? JSON.parse(mostPlayedRaw) : {};
-        
-        if (mostPlayedMap[game.slug]) {
-            mostPlayedMap[game.slug].playCount += 1;
-        } else {
-            mostPlayedMap[game.slug] = { game, playCount: 1 };
-        }
-        localStorage.setItem('most-played', JSON.stringify(mostPlayedMap));
-
-        // Load favorite status
-        const favoritesRaw = localStorage.getItem('favorites');
-        const favoritesList: Game[] = favoritesRaw ? JSON.parse(favoritesRaw) : [];
-        setIsFavorite(favoritesList.some((g) => g.slug === game.slug));
+        // These helpers tolerate corrupt JSON and browser storage restrictions.
+        recordGamePlay(storage, game);
+        setIsFavorite(readGameList(storage, 'favorites').some((item) => item.slug === game.slug));
     }, [game]);
 
     const toggleFullscreen = () => {
         const iframe = document.querySelector('iframe');
-        if (iframe) {
-            type IframeWithFullscreen = HTMLIFrameElement & {
-                webkitRequestFullscreen?: () => void;
-                msRequestFullscreen?: () => void;
-            };
+        if (!iframe) return;
 
-            const target = iframe as IframeWithFullscreen;
+        type IframeWithFullscreen = HTMLIFrameElement & {
+            webkitRequestFullscreen?: () => void;
+            msRequestFullscreen?: () => void;
+        };
+        const target = iframe as IframeWithFullscreen;
 
-            if (target.requestFullscreen) {
-                target.requestFullscreen();
-            } else if (target.webkitRequestFullscreen) { /* Safari */
-                target.webkitRequestFullscreen();
-            } else if (target.msRequestFullscreen) { /* IE11 */
-                target.msRequestFullscreen();
-            }
+        if (target.requestFullscreen) {
+            void target.requestFullscreen().catch((error) => console.error('Fullscreen request failed:', error));
+        } else if (target.webkitRequestFullscreen) {
+            target.webkitRequestFullscreen();
+        } else if (target.msRequestFullscreen) {
+            target.msRequestFullscreen();
         }
     };
 
-    const copyEmbed = () => {
+    const copyEmbed = async () => {
         const embedCode = `<iframe src="https://sopkit.github.io/games/embed/${game.slug}" width="800" height="600" frameborder="0" allowfullscreen></iframe>`;
-        navigator.clipboard.writeText(embedCode);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        try {
+            await navigator.clipboard.writeText(embedCode);
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 2000);
+        } catch (error) {
+            console.error('Unable to copy embed code:', error);
+        }
     };
 
     const shareGame = async () => {
@@ -72,27 +61,28 @@ export function GameInteractions({ game }: { game: Game }) {
                     text: `Play ${game.name} on SOP Games!`,
                     url: window.location.href,
                 });
-            } catch (err) {
-                console.log('Error sharing:', err);
+            } catch (error) {
+                // Closing the native share sheet is not an application error.
+                if (error instanceof Error && error.name !== 'AbortError') {
+                    console.error('Error sharing game:', error);
+                }
             }
-        } else {
-            navigator.clipboard.writeText(window.location.href);
-            alert('Link copied to clipboard!');
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 2000);
+        } catch (error) {
+            console.error('Unable to copy game link:', error);
         }
     };
 
     const toggleFavorite = () => {
-        const favoritesRaw = localStorage.getItem('favorites');
-        let favoritesList: Game[] = favoritesRaw ? JSON.parse(favoritesRaw) : [];
-        
-        if (isFavorite) {
-            favoritesList = favoritesList.filter((g) => g.slug !== game.slug);
-            setIsFavorite(false);
-        } else {
-            favoritesList.push(game);
-            setIsFavorite(true);
-        }
-        localStorage.setItem('favorites', JSON.stringify(favoritesList));
+        const storage = getBrowserStorage();
+        if (!storage) return;
+        setIsFavorite(updateFavorite(storage, game));
     };
 
     return (
@@ -123,8 +113,8 @@ export function GameInteractions({ game }: { game: Game }) {
             <button
                 onClick={toggleFavorite}
                 className={`w-full py-3 px-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 border ${
-                    isFavorite 
-                        ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20 hover:bg-yellow-500/20' 
+                    isFavorite
+                        ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20 hover:bg-yellow-500/20'
                         : 'bg-secondary text-secondary-foreground border-border hover:opacity-90'
                 }`}
             >
