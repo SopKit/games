@@ -5,7 +5,8 @@ export interface Game {
     url: string;
     embedUrl: string;
     image: string;
-    rating: string;
+    rating?: string;
+    ratingCount?: number;
     description?: string;
     instructions?: string;
     category?: string;

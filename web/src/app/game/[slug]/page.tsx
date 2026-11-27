@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ChevronLeft, Star } from 'lucide-react';
 import { GameInteractions } from '../../../components/GameInteractions';
 import { GameGrid } from '../../../components/GameGrid';
+import { getVerifiedRating } from '../../../lib/verified-rating';
 
 const BASE_URL = 'https://sopkit.github.io/games';
 
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const cleanDescription = game.description 
         ? (game.description.length > 155 ? `${game.description.slice(0, 152)}...` : game.description)
-        : `Play ${game.name} online for free. No download required. Rated ${parseFloat(game.rating).toFixed(1)}/5.`;
+        : `Play ${game.name} online for free. No download required.`;
 
     return {
         title: `${game.name} - Play Online for Free | SOP Games`,
@@ -81,6 +82,8 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
             </div>
         );
     }
+
+    const verifiedRating = getVerifiedRating(game);
 
     // Related Games: find games in same category, exclude current, limit to 6
     const relatedGames = games
@@ -132,13 +135,15 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                 playMode: 'SinglePlayer',
                 applicationCategory: 'Game',
                 operatingSystem: 'Any',
-                aggregateRating: {
-                    '@type': 'AggregateRating',
-                    ratingValue: game.rating,
-                    ratingCount: 100,
-                    bestRating: 5,
-                    worstRating: 1,
-                },
+                ...(verifiedRating ? {
+                    aggregateRating: {
+                        '@type': 'AggregateRating',
+                        ratingValue: verifiedRating.value,
+                        ratingCount: verifiedRating.ratingCount,
+                        bestRating: 5,
+                        worstRating: 1,
+                    },
+                } : {}),
                 offers: {
                     '@type': 'Offer',
                     price: '0',
@@ -212,10 +217,15 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                                     <span className="bg-gradient-to-r from-primary/80 to-purple-500/80 text-white px-4 py-1.5 rounded-full font-bold shadow-lg shadow-primary/20 backdrop-blur-md border border-white/10">
                                         Free to Play
                                     </span>
-                                    <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 backdrop-blur-md">
-                                        <Star className="w-4 h-4 fill-current" />
-                                        <span className="font-bold">{parseFloat(game.rating).toFixed(1)}</span>
-                                    </div>
+                                    {verifiedRating && (
+                                        <div
+                                            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 backdrop-blur-md"
+                                            aria-label={`Rated ${verifiedRating.value.toFixed(1)} out of 5 from ${verifiedRating.ratingCount} ratings`}
+                                        >
+                                            <Star className="w-4 h-4 fill-current" />
+                                            <span className="font-bold">{verifiedRating.value.toFixed(1)}</span>
+                                        </div>
+                                    )}
                                     {game.category && (
                                         <Link 
                                             href={`/category/${game.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} 

@@ -2,10 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Game } from '../types';
 import { Star, Play } from 'lucide-react';
+import { getVerifiedRating } from '../lib/verified-rating';
 
 export function GameCard({ game }: { game: Game }) {
-    // Parsing rating to 1 decimal place
-    const rating = parseFloat(game.rating).toFixed(1);
+    const verifiedRating = getVerifiedRating(game);
 
     return (
         <Link 
@@ -23,11 +23,16 @@ export function GameCard({ game }: { game: Game }) {
                 {/* Vignette Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-85 transition-opacity duration-300" />
 
-                {/* Floating Rating Badge */}
-                <div className="absolute top-2 right-2 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-yellow-400 text-[10px] font-bold tracking-wider">
-                    <Star className="w-3 h-3 fill-current" />
-                    <span>{rating}</span>
-                </div>
+                {/* Only display ratings backed by a real provider-supplied sample count. */}
+                {verifiedRating && (
+                    <div
+                        className="absolute top-2 right-2 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-yellow-400 text-[10px] font-bold tracking-wider"
+                        aria-label={`Rated ${verifiedRating.value.toFixed(1)} out of 5 from ${verifiedRating.ratingCount} ratings`}
+                    >
+                        <Star className="w-3 h-3 fill-current" />
+                        <span>{verifiedRating.value.toFixed(1)}</span>
+                    </div>
+                )}
 
                 {/* Central Play Icon Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
