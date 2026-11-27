@@ -13,7 +13,7 @@ export function getVerifiedRating(
   game: Pick<Game, "rating" | "ratingCount">,
 ): VerifiedRating | null {
   const rawRating = game.rating?.trim() ?? "";
-  if (!/^\\d+(?:\\.\\d+)?$/.test(rawRating)) return null;
+  if (!/^\d+(?:\.\d+)?$/.test(rawRating)) return null;
   const value = Number(rawRating);
   const ratingCount = game.ratingCount;
 
