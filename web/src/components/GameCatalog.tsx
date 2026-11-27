@@ -12,6 +12,14 @@ const fetcher = (url: string): Promise<Game[]> => fetch(url).then((res) => res.j
 
 const GAMES_PER_PAGE = 50;
 
+function getSortableRating(game: Game): number {
+    const rating = Number.parseFloat(game.rating ?? "");
+    const ratingCount = (game as Game & { ratingCount?: number }).ratingCount;
+    if (!Number.isFinite(rating) || rating < 1 || rating > 5) return -1;
+    if (!Number.isSafeInteger(ratingCount) || (ratingCount ?? 0) <= 0) return -1;
+    return rating;
+}
+
 interface GameCatalogProps {
     initialGames: Game[];
 }
@@ -137,7 +145,7 @@ export function GameCatalog({ initialGames }: GameCatalogProps) {
         }
 
         if (sort === 'rating') {
-            result.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+            result.sort((a, b) => getSortableRating(b) - getSortableRating(a));
         } else {
             // Fallback for "newest" using ID if date isn't available, or just keeping original order if that's implied "newest"
             // Assuming higher ID is newer for now.

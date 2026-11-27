@@ -19,5 +19,6 @@ describe("getVerifiedRating", () => {
     expect(getVerifiedRating({ rating: "4.2", ratingCount: 0 })).toBeNull();
     expect(getVerifiedRating({ rating: "4.2", ratingCount: -1 })).toBeNull();
     expect(getVerifiedRating({ rating: "not-a-score", ratingCount: 4 })).toBeNull();
+    expect(getVerifiedRating({ rating: "4.6 stars", ratingCount: 4 })).toBeNull();
   });
 });

@@ -12,7 +12,9 @@ export interface VerifiedRating {
 export function getVerifiedRating(
   game: Pick<Game, "rating" | "ratingCount">,
 ): VerifiedRating | null {
-  const value = Number.parseFloat(game.rating ?? "");
+  const rawRating = game.rating?.trim() ?? "";
+  if (!/^\\d+(?:\\.\\d+)?$/.test(rawRating)) return null;
+  const value = Number(rawRating);
   const ratingCount = game.ratingCount;
 
   if (!Number.isFinite(value) || value < 1 || value > 5) return null;
